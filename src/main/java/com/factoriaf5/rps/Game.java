@@ -45,7 +45,7 @@ public class Game{
     
     }
 
-    private static Move getMove(int choice) {
+    public static Move getMove(int choice) {
         switch (choice) {
             case 1: return new Rock();
             case 2: return new Paper();
@@ -54,7 +54,7 @@ public class Game{
         }
     }
 
-    private static Move getRandomMove() {
+    public static Move getRandomMove() {
         int randomChoice = (int) (Math.random() * 3) + 1;
         return getMove(randomChoice);
     }

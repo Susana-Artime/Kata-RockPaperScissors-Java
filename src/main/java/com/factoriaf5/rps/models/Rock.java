@@ -5,7 +5,7 @@ import com.factoriaf5.rps.application.Move;
 public class Rock extends Move {
     @Override
     public String getName() {
-        return "Rock";
+        return "Piedra";
     }
 
     @Override

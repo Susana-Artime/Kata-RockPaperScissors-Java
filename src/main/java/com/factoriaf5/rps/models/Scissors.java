@@ -5,7 +5,7 @@ import com.factoriaf5.rps.application.Move;
 public class Scissors extends Move {
     @Override
     public String getName() {
-        return "Scissors";
+        return "Tijera";
     }
 
     @Override

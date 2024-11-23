@@ -5,7 +5,7 @@ import com.factoriaf5.rps.application.Move;
 public class Paper extends Move {
     @Override
     public String getName() {
-        return "Paper";
+        return "Papel";
     }
 
     @Override
