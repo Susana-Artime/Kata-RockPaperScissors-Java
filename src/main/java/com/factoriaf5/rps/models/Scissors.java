@@ -10,6 +10,6 @@ public class Scissors extends Move {
 
     @Override
     public boolean win(Move other) {
-        return other instanceof Paper;
+        return other instanceof Paper || other instanceof Lizard;
     }
 }

@@ -9,13 +9,26 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 import com.factoriaf5.rps.application.Move;
+import com.factoriaf5.rps.models.Lizard;
 import com.factoriaf5.rps.models.Paper;
 import com.factoriaf5.rps.models.Rock;
 import com.factoriaf5.rps.models.Scissors;
+import com.factoriaf5.rps.models.Spock;
 
 
 public class GameTest 
 {
+
+    @Test
+    public void testGetMove(){
+
+        assertTrue(Game.getMove(1) instanceof Rock);
+        assertTrue(Game.getMove(2) instanceof Paper);
+        assertTrue(Game.getMove(3) instanceof Scissors);
+        assertTrue(Game.getMove(4) instanceof Lizard);
+        assertTrue(Game.getMove(5) instanceof Spock);
+        assertNull(Game.getMove(6));
+    }
     @Test
     void testGetMoveReturnsRock(){
         Move move = Game.getMove(1);
@@ -35,19 +48,54 @@ public class GameTest
     }
 
     @Test
-    void testGetMoveReturnsNullForInvalidInput() {
+    void testGetMoveReturnsLizard() {
         Move move = Game.getMove(4);
-        assertNull(move, "Se espera null para la entrada 4");
+        assertTrue(move instanceof Lizard, "Se espera Lagarto para la entrada 4");
+    }
+
+    @Test
+    void testGetMoveReturnsSpock() {
+        Move move = Game.getMove(5);
+        assertTrue(move instanceof Spock, "Se espera Spock para la entrada 5");
+    }
+
+    @Test
+    void testGetMoveReturnsNullForInvalidInput() {
+        Move move = Game.getMove(6);
+        assertNull(move, "Se espera null para la entrada 6");
     }
 
     @Test
     void testRandomMoveIsValid() {
         for (int i = 0; i < 100; i++) {
             Move move = Game.getRandomMove();
-            assertTrue(move instanceof Rock || move instanceof Paper || move instanceof Scissors, 
-                "El movimiento generado debe ser Piedra, Papel o Tijera");
+            assertTrue(move instanceof Rock || move instanceof Paper || move instanceof Scissors || move instanceof Spock || move instanceof Lizard, 
+            "El movimiento generado debe ser Piedra, Papel, Tijera, Lagarto o Spock");
+
         }
     }
+
+    @Test
+    public void testRockWinScissors() {
+        Move rock = new Rock();
+        Move scissors = new Scissors();
+        assertTrue(rock.win(scissors));
+    }
+
+    @Test
+    public void testPaperWinRock() {
+        Move paper = new Paper();
+        Move rock = new Rock();
+        assertTrue(paper.win(rock));
+    }
+
+    @Test
+    public void testSpockWinScissors() {
+        Move spock = new Spock();
+        Move scissors = new Scissors();
+        assertTrue(spock.win(scissors));
+    }
+
 
     @Test
     public void testPlayGameUserWins() {
@@ -74,7 +122,7 @@ public class GameTest
     @Test
     public void testPlayGameInvalidInput() {
         
-        String userInput = "5\n";
+        String userInput = "6\n";
         ByteArrayInputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
 
@@ -88,5 +136,8 @@ public class GameTest
         String output = out.toString();
         assertTrue(output.contains("Elección inválida"), "La salida debe indicar que la elección es inválida");
     }
-    
+
 }
+
+    
+

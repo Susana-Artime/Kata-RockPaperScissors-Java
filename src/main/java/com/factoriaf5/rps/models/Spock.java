@@ -2,14 +2,16 @@ package com.factoriaf5.rps.models;
 
 import com.factoriaf5.rps.application.Move;
 
-public class Rock extends Move {
+public class Spock extends Move{
+
     @Override
     public String getName() {
-        return "Piedra";
+        return "Spock";
     }
 
     @Override
     public boolean win(Move other) {
-        return other instanceof Scissors || other instanceof Lizard;
+        return other instanceof Scissors || other instanceof Rock;
     }
+    
 }
