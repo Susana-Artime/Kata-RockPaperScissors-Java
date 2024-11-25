@@ -6,9 +6,13 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
-
+import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+
 import com.factoriaf5.rps.application.Move;
+import com.factoriaf5.rps.application.MoveFactory;
 import com.factoriaf5.rps.models.Lizard;
 import com.factoriaf5.rps.models.Paper;
 import com.factoriaf5.rps.models.Rock;
@@ -20,48 +24,38 @@ public class GameTest
 {
 
     @Test
-    public void testGetMove(){
-
-        assertTrue(Game.getMove(1) instanceof Rock);
-        assertTrue(Game.getMove(2) instanceof Paper);
-        assertTrue(Game.getMove(3) instanceof Scissors);
-        assertTrue(Game.getMove(4) instanceof Lizard);
-        assertTrue(Game.getMove(5) instanceof Spock);
-        assertNull(Game.getMove(6));
-    }
-    @Test
     void testGetMoveReturnsRock(){
-        Move move = Game.getMove(1);
+        Move move = MoveFactory.createMove(1);
         assertTrue(move instanceof Rock, "Se espera Piedra para la entrada 1");
     }
 
     @Test
     void testGetMoveReturnsPaper() {
-        Move move = Game.getMove(2);
+        Move move = MoveFactory.createMove(2);
         assertTrue(move instanceof Paper, "Se espera Papel para la entrada 2");
     }
 
     @Test
     void testGetMoveReturnsScissors() {
-        Move move = Game.getMove(3);
+        Move move = MoveFactory.createMove(3);
         assertTrue(move instanceof Scissors, "Se espera Tijera para la entrada 3");
     }
 
     @Test
     void testGetMoveReturnsLizard() {
-        Move move = Game.getMove(4);
+        Move move = MoveFactory.createMove(4);
         assertTrue(move instanceof Lizard, "Se espera Lagarto para la entrada 4");
     }
 
     @Test
     void testGetMoveReturnsSpock() {
-        Move move = Game.getMove(5);
+        Move move = MoveFactory.createMove(5);
         assertTrue(move instanceof Spock, "Se espera Spock para la entrada 5");
     }
 
     @Test
     void testGetMoveReturnsNullForInvalidInput() {
-        Move move = Game.getMove(6);
+        Move move = MoveFactory.createMove(6);
         assertNull(move, "Se espera null para la entrada 6");
     }
 
@@ -137,7 +131,10 @@ public class GameTest
         assertTrue(output.contains("Elección inválida"), "La salida debe indicar que la elección es inválida");
     }
 
+    
 }
+
+
 
     
 
