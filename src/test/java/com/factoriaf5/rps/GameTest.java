@@ -1,16 +1,11 @@
 package com.factoriaf5.rps;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
-import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
-
 import com.factoriaf5.rps.application.Move;
 import com.factoriaf5.rps.application.MoveFactory;
 import com.factoriaf5.rps.models.Lizard;
